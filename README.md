@@ -167,3 +167,48 @@ sizeof(int);          // Size of (unary)
 - An unsigned operand is a variable or value that can only represent non-negative numbers (zero and positive integers). It uses all its bits to store the magnitude of the number, with no bit reserved for the sign.
 
 - signed or unsigned is represented by Most significant bit (MSB)
+
+- succinctness/concise/brevity - in few words as possible
+
+- semicolon is a terminator or separator depending on the language
+
+- Terminator in:
+1. C
+2. Java
+3. PHP
+
+- Separator in:
+1. Python
+2. Javascript
+3. Shell Script
+
+- Obtuse code refers to software that is intentionally written to be difficult for humans to read and understand, while still remaining functional for the machine.  This practice is often pursued as a recreational "dark art" or in competitive contexts like the International Obfuscated C Code Contest (IOCCC), rather than for production use.
+
+- `break` and `return` are most common way to leave a `switch`.
+
+- `break` can also be used to force and immediate exit from `while`, `for` and `do` loops as well.
+
+- in `for` loop, there are three component `expr1`, `expr2` and `expr3`, any of the expressions can be omitted but their termination semicolon must remain.
+
+expr1 — executed once before the loop starts (usually initialization).
+expr2 — tested before each iteration; if it evaluates to false (zero), the loop ends (this is the loop condition).
+expr3 — executed after each iteration (usually increment/update).
+
+- in case of omission of expression:
+Omitted expr1: nothing runs before the loop; do not assume any automatic initialization occurs.
+Omitted expr2: the condition is treated as true (as if 1), so the loop becomes infinite unless a break/return or other control exits it
+Omitted expr3: no post-iteration action is performed; the loop body must advance whatever would otherwise change.
+
+- In situations where no initialisation or re-initialization is required, `while` loops seems most natural, and when there is requirement of it `for` loop is preferred as it keeps both statements close together.
+
+- ```c
+int n = sizeof(v) / sizeof(v[0]);
+```
+
+- gives the number of elements in the array v when v is a true array defined in the current scope (e.g., int v[] = {1,2,3};). It works because sizeof(v) returns the total byte size of the whole array and sizeof(v[0]) returns the byte size of one element; dividing yields the element count (analogous to Python's len()).
+
+- `do while` loop is used when we want the loop body to be executed at least once, it keeps the tests for running the loop aat bottom.
+
+- A compound-assignment expression combines an arithmetic (or bitwise) operation with assignment in one operator and yields a value (the new stored value). Examples: +=, -=, =, /=, %=, |=, &=, ^=, <<=, >>=.
+
+
