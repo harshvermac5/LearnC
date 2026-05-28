@@ -211,4 +211,30 @@ int n = sizeof(v) / sizeof(v[0]);
 
 - A compound-assignment expression combines an arithmetic (or bitwise) operation with assignment in one operator and yields a value (the new stored value). Examples: +=, -=, =, /=, %=, |=, &=, ^=, <<=, >>=.
 
+- Forward declarations tell the compiler that these functions exist before they're actually defined.
+- `goto` statements are used to abandon processing in some deeply nested structure, breaking out of two loops at once.
 
+- stack uses LIFO (Last In will be First Out) structure.
+
+- call by reference means the stuff inside of function can affect the values of outside of the function.
+
+- `string` variable in python looks like a call in value, but it is an artifact of pointer pointing to a different value.
+
+- In C, everything is passed by value—including arrays. However, when you pass an array to a function, the array name decays into a pointer to its first element.
+
+- In C, arrays don't have true "call by reference"—they're passed by value as pointers, which effectively allows modification of the original array.
+
+- when a function calls itself, it is called recursion. it is useful in situations like tree-like structures
+
+- A stack frame is a block of memory allocated on the call stack for each function call. It contains:
+
+1. Local variables - variables declared inside the function
+2. Function parameters - the arguments passed to the function
+3. Return address - where the program should jump back to after the function finishes
+4. Previous frame pointer - link to the calling function's stack frame
+
+- When a function is called, a new stack frame is created. When it returns, that frame is destroyed. This creates a Last-In-First-Out (LIFO) structure—the most recent function call is on top of the stack.
+
+- Stack has a limit - if you make too many recursive calls without returning, you'll run out of stack space and get a stack overflow error. This is why deep recursion can be dangerous.
+
+- Pre-processor is a source code to source code translator to maintain the backward compatibility
