@@ -1,240 +1,641 @@
-- PL/I supports a variety of operations, including data processing, numerical computation, and scientific computing. It features structured programming, recursion, and extensive handling of data types such as fixed-point and floating-point numbers, character strings, and bit strings.
+# C Programming and Computer Science Notes
 
-- malloc is a function in C that allocates a specified number of bytes of memory on the heap and returns a pointer to it, while free is used to deallocate that memory when it is no longer needed. Both functions are essential for dynamic memory management in C programming.
+## PL/I
 
-- Heap memory is a large region of memory used for dynamic allocation, where data whose size or lifetime isn't known until runtime is stored. Unlike stack memory, heap memory must be manually managed by the programmer, as it does not automatically deallocate when a function returns.
+* PL/I supports a variety of operations, including data processing, numerical computation, and scientific computing.
+* Features include:
 
-- memory leak is a situation of forgetting to call free() when we are done of memory.
+  * Structured programming
+  * Recursion
+  * Extensive data type support:
 
-- In computer science, garbage collection is a form of automatic memory management. The garbage collector attempts to reclaim memory that was allocated by the program, but is no longer referenced; such memory is called garbage.
+    * Fixed-point numbers
+    * Floating-point numbers
+    * Character strings
+    * Bit strings
 
-- Garbage collection also refers to the heap space becoming fragmented after multiple malloc() and free() calls
+---
 
-- A runtime library is a set of pre-written routines that a program calls during execution to perform common tasks like memory management, input/output, and error handling, acting as an intermediary between the program and the operating system. It is linked to the program either at compile time or during execution and provides essential services that simplify development and improve performance
+# Memory Management
 
-- A typeless language is a programming language that does not enforce strict data types for variables, allowing for more flexibility in how data is used and manipulated. This can simplify coding but may also lead to errors if not managed carefully.
+## Dynamic Memory Allocation
 
-- A pointer in C is a variable that stores the memory address of another variable, allowing for direct memory manipulation and efficient data handling. Pointers are declared using the asterisk (*) symbol and can be initialized with the address of a variable using the ampersand (&) operator.
+### `malloc()` and `free()`
 
-- Lint programming refers to the automated checking of source code for programmatic and stylistic errors using a tool called a linter. This process helps improve code quality by identifying issues before the code is deployed.
+* `malloc()` allocates a specified number of bytes on the heap and returns a pointer to the allocated memory.
+* `free()` releases previously allocated memory.
+* Both are essential for dynamic memory management in C.
 
-- many small component approact to solve an overall set of problem
+### Heap Memory
 
-1. programs
-2. data types, operators and expressions
-3. control flow, if else while for
-4. function and program structure, external variables, scope rules
-5. pointers and address artithmetic
-6. structures and unions
-7. standard C I/O libraries
-8. interface b/w C and Unix
+* Heap memory is used for dynamic allocation.
+* Data whose size or lifetime is not known until runtime is typically stored on the heap.
+* Unlike stack memory, heap memory is not automatically released when a function returns.
+* The programmer is responsible for managing heap memory.
 
-- Rosetta Stone is an ancient Egyptian stone bearing inscriptions in several languages and scripts; their decipherment led to the understanding of hieroglyphic writing.
+### Memory Leak
 
-- Modulus refers to the operation that finds the remainder when one number is divided by another, often represented as "a % b" where "a" is the dividend and "b" is the divisor. For example, in the expression "5 % 2", the result is 1, since 5 divided by 2 leaves a remainder of 1.
+* A memory leak occurs when dynamically allocated memory is never released using `free()`.
+* Over time, memory leaks can cause increased memory consumption and program instability.
 
-- and &&
-- not !
-- or ||
+### Garbage Collection
 
-- single quotes are single character while double quotes are character array.
+* Garbage collection is automatic memory management.
+* A garbage collector reclaims memory that is no longer referenced by a program.
 
-- To run C code on Debian, you'll need to install a C compiler like gcc and then use the gcc command to compile your C code into an executable. You can install gcc by running sudo apt-get install build-essential in the terminal. Once installed, you can compile your C code by navigating to the directory containing your C file and running gcc -o output_file_name input_file_name.c. This will create an executable named output_file_name that you can run with ./output_file_name.
+### Heap Fragmentation vs Garbage Collection
 
-- ampersand in front of variable is a way to tell C language to give the address of the variable, rather than the value of the variable
+* **Heap Fragmentation:** Memory becomes split into small non-contiguous blocks due to repeated allocations and deallocations.
+* **Garbage Collection:** Automatic reclamation of unused memory.
 
-- stdin is file that is read through until EOF
+---
 
-- stdout is where printf is going
+# Runtime Libraries
 
-- stderr is where error message is thrown
+* A runtime library is a collection of pre-written routines used during program execution.
+* Common services include:
 
-- The difference between Unicode and UTF is that Unicode is a standard character set, while UTF is the encoding used to translate that set into data a computer can store.
+  * Memory management
+  * Input/output
+  * Error handling
+* Runtime libraries act as intermediaries between applications and the operating system.
 
-- Unicode is like a giant catalog or directory. It assigns a unique number (called a code point) to every character, emoji, and symbol from every language. It defines what the character is, but not how it is saved as bits and bytes.
+---
 
-- UTF (Unicode Transformation Format) is the actual implementation or "packaging". It defines how those code point numbers are converted into a sequence of binary bytes for storage or transmission
+# Type Systems
 
-- '\n' character is a single character, despite containing two letters, as C prefers the obvious meaning independent of its particular character set, same can be observed as it uses the single quotes.
+## Typeless Languages
 
-- expressions connected by `&&` or `||` are evaluated left to right.
+* A typeless language does not associate values with fixed types in the traditional sense.
+* The term is uncommon today.
+* Modern languages are generally classified as:
 
-- size of an array in C cannot be adjusted using an array declaration while the program is running.
+  * Statically typed
+  * Dynamically typed
 
-- A segmentation fault, or segfault, is an error that occurs when a program tries to access a memory location it is not allowed to access, often leading to the operating system terminating the program to prevent further issues. This typically happens due to programming errors, such as accessing memory outside allocated bounds or using uninitialized pointers.
+---
 
-- Python, JS, PHP creats multicharacter thing called string constant
+# Pointers
 
-- In C single quotes are a character and double quotes are a character array or sting constant, and neither behaves like a string in python.
+## What is a Pointer?
 
-- In vanilla C, a character is a byte (8 bits).
-
-- The C char type is just a number - representing 1 byte, indicating values upto 255.
-
-- `ord()` function in python shows the ASCII value of character.
-
-```py
->>> print("A", ord("A"))
-A 65
->>> print("😀", ord("😀"))
-😀 128512
-```
-
-- Hence C cannot represents emoji as chars
-
-- float number is a 32-bit quantity, amouting to seven significant digits
-
-- C data types:
-
-1. int
-2. float
-3. char
-4. short
-5. long
-6. double (double length of float)
-
-- python3 returns the float when doing divisions of integers
-
-- for loop in C contains three parts, first is perfomed when loop is entered, second part is the condition that control the loop and the third part is the re-evaluation step
-
-- in mordern language, there are two kinds of loops, determinant and non determinant.
-
-- Determinant loops are predictable, non-determinant loops are unpredictable until they actually run!
-
-- In C-like languages the for and while loop are indeterminant, while in PHP or Python foreach loop is determinant.
-
-- putchar is a function in C that writes a single character to the standard output (usually the console). It returns the character written as an unsigned char cast to an int, or EOF if an error occurs.
-
-- relational `!=` not equal to has higher precedence over `=` equal to, thus surrounding it proper parantheses is required to prevent undesired consequences.
-
-- `%f` is used for both float and double, `%.0f` is used to supress printing of non-existent fraction part.
-
-- form of a function:
-
-```
-name (argument list, if any)
-argument declarations, if any
-  declarations
-  statements
-```
-
-- function variables has local scope, which means two different functions can use the same variable without any conflict
-
-- by default, single value argument are passed 'by value' and `&` is used in order to pass it 'by reference'.
-
-- the `%s` format specification in `printf` expects a string terminating with a `\0`.
-
-- The extern keyword is for declarations (telling the compiler a variable exists elsewhere), not for function parameters or local variable declarations.
-
-- Definition refers to the place where the variable is actually created or assigned storage
-
-- Declaration refers to the place where the nature of the variable (type) is stated but no storage is allocated
-
-- In computing, endianness is the order in which bytes within a word data type are transmitted over a data communication medium or addressed in computer memory, counting only byte significance compared to earliness. Endianness is primarily expressed as big-endian (BE) or little-endian (LE). 
-
--  Form feed (\f or \ddd) sends a command that causes the printer to eject the current page and start printing on a new page. In modern computing, it's rarely used for actual printing, but it still appears in text formatting and document processing.
-
-- External and static variables are initialzed to zero by default
-
-- Explicitly initialized automatic variables are initialised each time the function they are in is called.
-
-- unary - Consisting of or involving a single element or component, there is unary - but no unary +. These only work with one operand.
-
-- relational operators have lower precedence than arithmetic operators
-
-- the modulus operator can't be applied on `float` or `double`
+* A pointer is a variable that stores the memory address of another variable.
 
 ```c
-int count = 5;
-++count;              // Increment (unary)
-!flag;                // Logical NOT (unary)
-~bits;                // Bitwise NOT (unary)
-sizeof(int);          // Size of (unary)
-&variable;            // Address of (unary)
-*pointer;             // Dereference (unary)
+int x = 10;
+int *p = &x;
 ```
-- `char` and `int` are intermixed in arithmetic expression, thus every `char` is automatically converted into an `int`
 
-- sequence of conversion for each arithmetic operations:
+* `&` obtains the address of a variable.
+* `*` dereferences a pointer.
 
-1. `char` and `short` are converted into `int` and `float` is converted into `double`.
-2. then if either operand is `double`, the other is converted into `double` and the end result will be `double`.
-3. if either operand is `long`, the other is converted into `long`
-4. if either operand is `unsigned` the other is converted into `unsigned`
+### Benefits
 
-- all floating point arithmetic is done in double precision.
+* Direct memory manipulation
+* Efficient data handling
+* Dynamic memory allocation
 
-- An unsigned operand is a variable or value that can only represent non-negative numbers (zero and positive integers). It uses all its bits to store the magnitude of the number, with no bit reserved for the sign.
+---
 
-- signed or unsigned is represented by Most significant bit (MSB)
+# Linting
 
-- succinctness/concise/brevity - in few words as possible
+* A linter is a tool that checks source code for:
 
-- semicolon is a terminator or separator depending on the language
+  * Programming errors
+  * Style issues
+  * Potential bugs
+* Linting improves code quality before deployment.
 
-- Terminator in:
-1. C
-2. Java
-3. PHP
+---
 
-- Separator in:
-1. Python
-2. Javascript
-3. Shell Script
+# Software Design Philosophy
 
-- Obtuse code refers to software that is intentionally written to be difficult for humans to read and understand, while still remaining functional for the machine.  This practice is often pursued as a recreational "dark art" or in competitive contexts like the International Obfuscated C Code Contest (IOCCC), rather than for production use.
+* A common software design philosophy is to solve large problems using many small, reusable components.
 
-- `break` and `return` are most common way to leave a `switch`.
+---
 
-- `break` can also be used to force and immediate exit from `while`, `for` and `do` loops as well.
+# Topics in C Programming
 
-- in `for` loop, there are three component `expr1`, `expr2` and `expr3`, any of the expressions can be omitted but their termination semicolon must remain.
+1. Programs
+2. Data types, operators, and expressions
+3. Control flow (`if`, `else`, `while`, `for`)
+4. Functions and program structure
+5. External variables and scope rules
+6. Pointers and address arithmetic
+7. Structures and unions
+8. Standard C I/O libraries
+9. Interface between C and Unix
 
-expr1 — executed once before the loop starts (usually initialization).
-expr2 — tested before each iteration; if it evaluates to false (zero), the loop ends (this is the loop condition).
-expr3 — executed after each iteration (usually increment/update).
+---
 
-- in case of omission of expression:
-Omitted expr1: nothing runs before the loop; do not assume any automatic initialization occurs.
-Omitted expr2: the condition is treated as true (as if 1), so the loop becomes infinite unless a break/return or other control exits it
-Omitted expr3: no post-iteration action is performed; the loop body must advance whatever would otherwise change.
+# Rosetta Stone
 
-- In situations where no initialisation or re-initialization is required, `while` loops seems most natural, and when there is requirement of it `for` loop is preferred as it keeps both statements close together.
+* The Rosetta Stone is an ancient Egyptian stone containing inscriptions in multiple scripts.
+* Its decipherment enabled the understanding of Egyptian hieroglyphics.
 
-- ```c
+---
+
+# Operators
+
+## Modulus Operator
+
+* `%` returns the remainder after division.
+
+```c
+5 % 2  // Result: 1
+```
+
+* Works only with integer types in C.
+
+## Logical Operators
+
+| Operator | Meaning     |   |            |
+| -------- | ----------- | - | ---------- |
+| `&&`     | Logical AND |   |            |
+| `        |             | ` | Logical OR |
+| `!`      | Logical NOT |   |            |
+
+### Short-Circuit Evaluation
+
+* Expressions connected by `&&` or `||` are evaluated from left to right.
+
+---
+
+# Characters and Strings
+
+## Single vs Double Quotes
+
+```c
+'A'    // Character constant
+"A"    // String literal
+```
+
+* Character constants use single quotes.
+* String literals use double quotes and are terminated by `'\0'`.
+
+### Character Arrays vs Python Strings
+
+* C strings are character arrays.
+* They are much simpler and less feature-rich than Python strings.
+
+### Escape Sequences
+
+```c
+'\n'   // Newline
+'\f'   // Form feed
+```
+
+* `'\n'` is a single character despite consisting of two symbols.
+* `'\f'` traditionally caused printers to start a new page.
+
+---
+
+# Running C on Debian
+
+Install GCC:
+
+```bash
+sudo apt install build-essential
+```
+
+Compile:
+
+```bash
+gcc -o program source.c
+```
+
+Run:
+
+```bash
+./program
+```
+
+---
+
+# Standard Streams
+
+| Stream   | Purpose         |
+| -------- | --------------- |
+| `stdin`  | Standard input  |
+| `stdout` | Standard output |
+| `stderr` | Standard error  |
+
+---
+
+# Unicode and UTF
+
+## Unicode
+
+* A universal character set.
+* Assigns code points to characters, symbols, and emoji.
+
+## UTF (Unicode Transformation Format)
+
+* Defines how Unicode code points are stored as bytes.
+* Examples:
+
+  * UTF-8
+  * UTF-16
+  * UTF-32
+
+Unicode defines *what* a character is.
+
+UTF defines *how* it is stored.
+
+---
+
+# Arrays
+
+## Array Size
+
+* Traditional array sizes cannot be changed after declaration.
+
+### Number of Elements
+
+```c
 int n = sizeof(v) / sizeof(v[0]);
 ```
 
-- gives the number of elements in the array v when v is a true array defined in the current scope (e.g., int v[] = {1,2,3};). It works because sizeof(v) returns the total byte size of the whole array and sizeof(v[0]) returns the byte size of one element; dividing yields the element count (analogous to Python's len()).
+* Works only for actual arrays in the current scope.
 
-- `do while` loop is used when we want the loop body to be executed at least once, it keeps the tests for running the loop aat bottom.
+---
 
-- A compound-assignment expression combines an arithmetic (or bitwise) operation with assignment in one operator and yields a value (the new stored value). Examples: +=, -=, =, /=, %=, |=, &=, ^=, <<=, >>=.
+# Segmentation Faults
 
-- Forward declarations tell the compiler that these functions exist before they're actually defined.
-- `goto` statements are used to abandon processing in some deeply nested structure, breaking out of two loops at once.
+* A segmentation fault occurs when a program accesses memory it is not allowed to access.
+* Common causes:
 
-- stack uses LIFO (Last In will be First Out) structure.
+  * Invalid pointers
+  * Out-of-bounds access
+  * Dereferencing NULL pointers
 
-- call by reference means the stuff inside of function can affect the values of outside of the function.
+---
 
-- `string` variable in python looks like a call in value, but it is an artifact of pointer pointing to a different value.
+# Character Representation
 
-- In C, everything is passed by value—including arrays. However, when you pass an array to a function, the array name decays into a pointer to its first element.
+## `char`
 
-- In C, arrays don't have true "call by reference"—they're passed by value as pointers, which effectively allows modification of the original array.
+* A `char` is typically 1 byte (8 bits).
+* Often stores values from 0–255 (unsigned) or -128–127 (signed).
 
-- when a function calls itself, it is called recursion. it is useful in situations like tree-like structures
+### Character Promotion
 
-- A stack frame is a block of memory allocated on the call stack for each function call. It contains:
+* `char` and `short` are automatically promoted to `int` in arithmetic expressions.
 
-1. Local variables - variables declared inside the function
-2. Function parameters - the arguments passed to the function
-3. Return address - where the program should jump back to after the function finishes
-4. Previous frame pointer - link to the calling function's stack frame
+### Unicode Limitation
 
-- When a function is called, a new stack frame is created. When it returns, that frame is destroyed. This creates a Last-In-First-Out (LIFO) structure—the most recent function call is on top of the stack.
+* A single-byte `char` cannot represent most Unicode characters, such as emoji.
 
-- Stack has a limit - if you make too many recursive calls without returning, you'll run out of stack space and get a stack overflow error. This is why deep recursion can be dangerous.
+Python example:
 
-- Pre-processor is a source code to source code translator to maintain the backward compatibility
+```python
+print(ord("A"))     # 65
+print(ord("😀"))    # 128512
+```
+
+---
+
+# Numeric Types
+
+## Floating Point
+
+* `float` is typically 32 bits.
+* Provides about 7 significant decimal digits.
+
+### Basic Types
+
+```c
+int
+float
+char
+short
+long
+double
+```
+
+* `double` typically provides twice the precision of `float`.
+
+### Printing
+
+```c
+printf("%f", value);
+printf("%.0f", value);
+```
+
+* `%f` works for both `float` and `double` in `printf()`.
+* `%.0f` suppresses decimal places.
+
+---
+
+# Type Conversion Rules
+
+For arithmetic operations:
+
+1. `char` and `short` become `int`.
+2. `float` becomes `double`.
+3. If either operand is `double`, the result is `double`.
+4. Else if either operand is `long`, the other becomes `long`.
+5. Else if either operand is `unsigned`, the other becomes `unsigned`.
+
+Most floating-point arithmetic is performed in double precision.
+
+---
+
+# Loops
+
+## `for` Loop Structure
+
+```c
+for (expr1; expr2; expr3)
+```
+
+* `expr1`: Initialization
+* `expr2`: Condition
+* `expr3`: Update
+
+### Omitted Expressions
+
+* Omit `expr1`: no initialization.
+* Omit `expr2`: treated as always true.
+* Omit `expr3`: no update step.
+
+## `while`
+
+* Preferred when initialization and updates occur elsewhere.
+
+## `do-while`
+
+```c
+do {
+    ...
+} while(condition);
+```
+
+* Executes the body at least once.
+
+---
+
+# Functions
+
+## General Form
+
+```c
+return_type name(parameters)
+{
+    declarations;
+    statements;
+}
+```
+
+### Scope
+
+* Local variables are visible only within their function.
+* Different functions may use variables with the same name.
+
+### Passing Arguments
+
+#### Call by Value
+
+* C passes arguments by value.
+* A copy of the value is provided to the function.
+
+#### Arrays
+
+* Arrays decay into pointers when passed to functions.
+* This allows modification of the original array contents.
+
+### Returning Values
+
+```c
+return value;
+```
+
+* Returns control and optionally a value to the caller.
+
+### Forward Declarations
+
+```c
+int add(int, int);
+```
+
+* Tell the compiler that a function exists before its definition appears.
+
+---
+
+# Storage Classes
+
+## `extern`
+
+* Declares a global variable or function defined elsewhere.
+
+```c
+extern int count;
+```
+
+### Declaration vs Definition
+
+**Declaration**
+
+```c
+extern int count;
+```
+
+* Describes a variable.
+* Does not allocate storage.
+
+**Definition**
+
+```c
+int count;
+```
+
+* Allocates storage.
+
+## `static`
+
+* External and static variables are initialized to zero by default.
+
+## `register`
+
+* Suggests that a variable be stored in a CPU register for faster access.
+* Modern compilers usually ignore this hint.
+* You cannot apply `&` to a register variable.
+
+---
+
+# Recursion
+
+* Recursion occurs when a function calls itself.
+* Useful for:
+
+  * Trees
+  * Recursive data structures
+  * Divide-and-conquer algorithms
+
+---
+
+# Stack and Stack Frames
+
+## Stack
+
+* Uses a Last-In, First-Out (LIFO) structure.
+
+## Stack Frame
+
+A stack frame contains:
+
+1. Local variables
+2. Function parameters
+3. Return address
+4. Previous frame pointer
+
+* A new stack frame is created for every function call.
+* Destroyed when the function returns.
+* In simple terms, a stack frame is the current execution context of a function.
+
+### Stack Overflow
+
+* Excessive recursion can exhaust stack space.
+* This results in a stack overflow.
+
+---
+
+# Preprocessor
+
+* The C preprocessor performs source-to-source transformations before compilation.
+* Examples:
+
+  * `#include`
+  * `#define`
+  * Conditional compilation
+
+---
+
+# Unary Operators
+
+Unary operators work on a single operand.
+
+```c
+++count
+!flag
+~bits
+sizeof(int)
+&variable
+*pointer
+```
+
+---
+
+# Operator Precedence
+
+* Arithmetic operators have higher precedence than relational operators.
+* Relational operators have higher precedence than assignment.
+
+Example:
+
+```c
+if ((c = getchar()) != EOF)
+```
+
+Parentheses prevent unintended behavior.
+
+---
+
+# Compound Assignment
+
+Examples:
+
+```c
++=
+-=
+*=
+/=
+%=
+&=
+|=
+^=
+<<=
+>>=
+```
+
+These combine an operation with assignment.
+
+---
+
+# `break` and `goto`
+
+## `break`
+
+Can exit:
+
+* `switch`
+* `for`
+* `while`
+* `do-while`
+
+## `goto`
+
+* Occasionally useful for escaping deeply nested structures.
+* Generally discouraged in modern code.
+
+---
+
+# Endianness
+
+Endianness describes byte ordering in memory.
+
+### Big Endian
+
+* Most significant byte stored first.
+
+### Little Endian
+
+* Least significant byte stored first.
+
+---
+
+# Signed and Unsigned
+
+## Unsigned Types
+
+* Store only non-negative values.
+* Use all bits for magnitude.
+
+## Signed Types
+
+* Store both positive and negative values.
+* Modern systems typically use two's complement representation.
+
+---
+
+# Miscellaneous
+
+## Conciseness
+
+* Writing or speaking using as few words as necessary.
+
+## Semicolons
+
+### Terminator Languages
+
+* C
+* Java
+* PHP
+* JavaScript
+
+### Python
+
+* Semicolons are optional separators, not statement terminators.
+
+## Obfuscated Code
+
+* Code intentionally written to be difficult to understand.
+* Often used in competitions such as the International Obfuscated C Code Contest (IOCCC).
+
+## Programs and Functions
+
+* A program consists of functions working together.
+* Functions communicate through:
+
+  * Arguments
+  * Return values
