@@ -639,3 +639,16 @@ Endianness describes byte ordering in memory.
 
   * Arguments
   * Return values
+
+---
+
+## Struct
+
+* Struct is passed by reference as well, which means that contents of `structs` are also passed with the address of the entire `struct`.
+
+
+---
+
+- A file ending in `.o` is an object file. The compiler creates an object file for each source file, before linking them together, into the final executable.
+
+- `C` doesn't allow functions to be defined inside other functions.
